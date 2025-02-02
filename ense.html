@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulaire d'information</title>
+</head>
+<body>
+ 
+    <h2>Formulaire d'information</h2>
+    
+    <form action="rech.php" method="get">
+        <label for="recherche_id">Rechercher par ID :</label>
+        <input type="text" id="recherche_id" name="recherche_id">
+        <input type="submit" value="Rechercher"><br><br>
+       
+    </form>
+   
+   
+
+   
+ <form action="enr.php" method="post"> 
+    <label>Sexe :</label>
+    <input type="radio" id="male" name="sexe" value="male">
+    <label for="male">homme</label>
+    <input type="radio" id="female" name="sexe" value="female">
+    <label for="female">Femme</label><br><br>
+    
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required><br><br>
+
+        <label for="prenom">Prenom :</label>
+        <input type="text" id="prenom" name="prenom" required><br><br>
+      
+    
+        <label for="date_naissance">Date de naissance :</label>
+<input type="date" id="date_naissance" name="date_naissance"><br><br>
+
+
+<label for="lieu_naissance">Lieu de naissance :</label>
+<input type="text" id="lieu_naissance" name="lieu_naissance" required><br><br>
+
+<label for="email">Email :</label>
+<input type="email" id="email" name="email" required><br><br>
+
+
+<label for="gra">Grade :</label>
+<select id="gra" name="gra">
+    <option value="ASST">ASSISTANT</option>
+    <option value="MAB">MAB</option>
+    <option value="MAA">MAA</option>
+    <option value="MCB">MCB</option>
+    <option value="MCA">MCA</option>
+    <option value="PROF">PROFESSEUR</option>
+ 
+   
+    <!-- Ajoutez d'autres options ici -->
+</select><br><br>
+<label>Specialite :</label>
+<input type="radio" id="info" name="spec" value="info">
+<label for="male">informatique</label>
+
+<input type="radio" id="math" name="spec" value="math">
+<label for="female">mathematiques</label>
+
+<input type="radio" id="eng" name="spec" value="eng">
+<label for="male">englais</label>
+
+<input type="radio" id="aut" name="spec" value="autre">
+<label for="male">autre</label>
+<br><br>
+
+
+
+
+        <label for="adresse">Adresse :</label>
+        <input type="text" id="adresse" name="adresse" required><br><br>
+
+        
+
+        <label for="cod_post">Code Postal :</label>
+        <input type="text" id="cod_post" name="cod_post" required><br><br>
+
+        <label for="nat">Nationalite :</label>
+        <select id="nat" name="nat">
+            <option value="Algerien">Algerien</option>
+            <option value="Etrange">Etrange</option>
+           
+        </select><br><br>
+
+        <label for="cod">Code :</label>
+        <select id="cod" name="cod">
+            <option value="DZ">DZ</option>
+            <option value="ETR">ETR</option>
+       
+            <!-- Ajoutez d'autres options ici -->
+        </select><br><br>
+
+        <label>Systeme :</label><br>
+        <input type="checkbox" id="unix" name="systeme[]" value="Unix">
+        <label for="unix">Unix</label><br>
+        <input type="checkbox" id="windows" name="systeme[]" value="Windows">
+        <label for="windows">Windows</label><br>
+        <input type="checkbox" id="android" name="systeme[]" value="Android">
+        <label for="android">Android</label><br><br>
+
+        <label>Situation matrimoniale :</label><br>
+        <input type="radio" id="marie" name="situ" value="marie">
+        <label for="marie">Marie</label><br>
+        <input type="radio" id="divorce" name="situ" value="divorce">
+        <label for="divorce">Divorce</label><br><br>
+
+        
+
+        
+<label><u>Applications:</u></label>
+<br>
+<select multiple="multiple"  name="applications[]">
+    <option>mysql</option>
+    <option>spyder</option>
+    <option>facebook</option>
+    <option>sgbd</option>
+</select><br><br>
+ 
+
+
+        <input type="submit" value="submit" name="submit">
+        <input type="button" value="Afficher" onclick="afficherTousLesEnregistrements()">
+
+
+        
+       
+
+<script>
+        function afficherTousLesEnregistrements() {
+            // Redirigez vers une page qui affiche tous les enregistrements
+            window.location = "aff.php";
+        }
+        </script> 
+        
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*">
+        <input type="submit" name="submit" value="inserer">
+    </form>
+    
+    
+    </form>
+    
+    
+    <form method="post" action="supp.php">
+            <label for="recherche_id">Entrez ID :</label>
+            <input type="text" id="id_a_supprimer" name="id_a_supprimer" required>
+            <button type="submit" name="supprimer">Supprimer</button><br><br>
+        </form>
+  
+
+
+
+
+</body>
+
+</html>

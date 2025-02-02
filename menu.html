@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu de navigation</title>
+</head>
+<body>
+    <h1>Menu de navigation</h1>
+
+    <p>Selectionnez une section :</p>
+
+    <input type="button" value="Etudiant" onclick="navigateTo('tp.html')">
+    <input type="button" value="Enseignant" onclick="chargerSmenu()">
+    <input type="button" value="Module" onclick="navigateTo('module.html')">
+    <input type="button" value="bulletin de notes" onclick="navigateTo('bull.html')">
+    <input type="button" value="pv" onclick="navigateTo('pv.html')">
+    <input type="button" value="stats" onclick="navigateTo('graph.html')">
+    <input type="button" value="stats2" onclick="navigateTo('statu.html')"><br><br>
+    <input type="button" value="afficherlistuser" onclick="navigateTo('afficherlistuser.php')">
+    <script>
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+
+        function chargerSmenu() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "smenu.html", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("smenuContent").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+
+    <div id="smenuContent">
+        <!-- Le contenu de smenu.html sera affiché ici sous le bouton "Enseignant" -->
+    </div>
+</body>
+</html>

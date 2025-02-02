@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bultin de notes</title>
+    <!-- Assurez-vous d'inclure votre lien vers jQuery ici -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#selected_module").change(function() {
+                var selectedModule = $(this).val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "rechE.php", // Assurez-vous que le chemin est correct
+                    data: { module: selectedModule },
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response); // Affichez la réponse dans la console
+                        // Remplissez les champs avec les informations récupérées
+                        $("#code_module").val(response.code_module);
+                        $("#coefficient").val(response.coefficient);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error("Erreur AJAX:", textStatus, errorThrown);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+ 
+    <h2> saisie bulletin de notes</h2>
+ 
+ 
+
+<form method="post" action="affa.php">
+   
+    <button type="submit" name="afficherList">afficherList</button><br><br>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+ function afficherTousLesEnregistrements() {
+     // Redirigez vers une page qui affiche tous les enregistrements
+     window.location = "affo.php";
+ }
+ </script>
+
+
+
+</body>
+</html>
+
+
+   
+   
+ 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Statistiques des étudiants</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- Graphique histogramme -->
+<canvas id="histogrammeChart" width="400" height="200"></canvas>
+
+<!-- Graphique camembert -->
+<canvas id="camembertChart" width="400" height="200"></canvas>
+
+<script>
+// Récupérer les données JSON dans JavaScript
+var data = <?php echo $data_json; ?>;
+
+// Graphique histogramme
+var histogrammeChart = new Chart(document.getElementById('histogrammeChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+        labels: Object.keys(data),
+        datasets: [{
+            label: 'Nombre d\'étudiants par sexe',
+            data: Object.values(data),
+            backgroundColor: ['#36A2EB', '#FF6384']
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// Graphique camembert
+var camembertChart = new Chart(document.getElementById('camembertChart').getContext('2d'), {
+    type: 'pie',
+    data: {
+        labels: Object.keys(data),
+        datasets: [{
+            data: Object.values(data),
+            backgroundColor: ['#36A2EB', '#FF6384']
+        }]
+    }
+});
+</script>
+
+</body>
+</html>

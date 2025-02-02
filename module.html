@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Module Form</title>
+</head>
+<body>
+    <h2>Module Information</h2>
+     
+    <form action="rech1.php" method="get">
+        <label for="id">Id:</label>
+        <input type="text" id="id" name="id" >
+        <input type="submit" value="Rechercher"><br><br>
+       
+    </form>
+   
+    <form action="process.php" method="post">
+        
+        <label for="code_module">Code Module:</label>
+        <input type="text" id="code_module" name="code_module" required><br><br>
+        <label for="Nom_module">Nom Module:</label>
+        <input type="text" id="Nom_module" name="Nom_module" required>
+    
+        <label for="coefficient">Coefficient:</label>
+        <input type="text" id="coefficient" name="coefficient" required><br><br>
+
+        <label for="volume_horaire">Volume Horaire:</label>
+        <input type="text" id="volume_horaire" name="volume_horaire" required><br><br>
+
+        <label for="fil">Filiere:</label>
+        <select id="fil" name="fil">
+            <option value="TC">TC</option>
+            <option value="2SC">2 SC</option>
+            <option value="3ISIL">3 ISIL</option>
+            <option value="3SI">3SI</option>
+            <option value="M1">M1</option>
+            <option value="M2ISI">M2ISI</option>
+            <option value="M2WIC">M2WIC</option>
+            <option value="M2RSSI">M2RSSI</option>
+            <option value="1ING">1ING</option>
+            <option value="2ING">2ING</option>
+        </select><br><br>
+
+        <input type="submit" name="submit" value="Submit">
+    </form>
+    <input type="button" value="Afficher" onclick="afficherTousLesEnregistrements()">
+
+
+        
+       
+
+    <script>
+            function afficherTousLesEnregistrements() {
+                // Redirigez vers une page qui affiche tous les enregistrements
+                window.location = "aff1.php";
+            }
+            </script> 
+            <form method="post" action="supp1.php">
+                <label for="recherche_id">Entrez ID :</label>
+                <input type="text" id="id_a_supprimer" name="id_a_supprimer" required>
+                <button type="submit" name="supprimer">Supprimer</button><br><br>
+            </form>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bultin de notes</title>
+    <!-- Assurez-vous d'inclure votre lien vers jQuery ici -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#selected_module").change(function() {
+                var selectedModule = $(this).val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "rechE.php", // Assurez-vous que le chemin est correct
+                    data: { module: selectedModule },
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response); // Affichez la réponse dans la console
+                        // Remplissez les champs avec les informations récupérées
+                        $("#code_module").val(response.code_module);
+                        $("#coefficient").val(response.coefficient);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error("Erreur AJAX:", textStatus, errorThrown);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        document.getElementById('selected_module').addEventListener('change', function() {
+            var selectedModule = this.value;
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var moduleInfo = JSON.parse(xhr.responseText);
+                    document.getElementById('code_module').value = moduleInfo.code_module;
+                    document.getElementById('coefficient').value = moduleInfo.coefficient;
+                }
+            };
+            xhr.open('POST', 'get_module_info.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.send('module=' + selectedModule);
+        });
+    </script>
+    
+        
+</head>
+<body>
+ 
+    <h2> saisie bulletin de notes</h2>
+ 
+    <form action="action.php" method="post">
+        <label for="recherche_id">ID de l'étudiant :</label>
+        <input type="text" id="recherche_id" size="5" name="recherche_id" required>
+
+        <button type="submit" name="action" value="rechE">Rechercher</button>
+        <button type="submit" name="action" value="affo">Bulletin</button>
+    </form>
+   
+ <form action=".php" method="post"> *
+    <label>Sexe :</label>
+    <input type="radio" id="male" name="sexe" value="male">
+    <label for="male">homme</label>
+    <input type="radio" id="female" name="sexe" value="female">
+    <label for="female">Femme</label><br><br>
+    
+        <label for="nom">Nom/Prenom :</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="prenom"></label>
+        <input type="text" id="prenom" name="prenom" required><br><br>
+
+
+        <label for="fil">Filiere</label>
+        <input type="text" id=" fil" name="fil" required><br><br>
+
+        <label for=" Nom_module">Module :</label>
+        <select id="Nom_module" name="Nom_module">
+            <option value="BDD">Base de donne</option>
+            <option value="ARCHI">Architecture</option>
+            <option value="ANA">Analyse</option>
+            <option value="ENG">Englais</option>
+        </select><br><br>
+
+            <label for="code_module ">Code module:</label>
+        <input type="text" id="code_module "  size="5" name="code_module " required><br><br>
+
+        <label for="coefficient">Coefficient:</label>
+        <input type="text" id="coefficient"  size="5" name="coefficient" required><br><br>
+
+        <label for="Note">Note:</label>
+        <input type="text" id="Note" size="5" name="Note" required><br><br>
+
+
+
+        <input type="submit" value="submit" name="submit"><br><br>
+            
+ </form>
+
+
+
+ <form action="modfi.php" method="get">
+    <label for="recherche_id">Rmodifier:</label>
+    <input type="text" id="recherche_id" name="recherche_id">
+    <input type="submit" value="Rechercher"><br><br>
+   
+</form>
+
+
+
+
+
+
+
+<form method="post" action="supprimer.php">
+   
+    <button type="submit" name="supprimer">Supprimer</button><br><br>
+</form>
+
+
+<form method="post" action="afflist.php">
+   
+    <button type="submit" name="afficherList">afficherList</button><br><br>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+ function afficherTousLesEnregistrements() {
+     // Redirigez vers une page qui affiche tous les enregistrements
+     window.location = "affo.php";
+ }
+ </script>
+
+
+
+</body>
+</html>
+
+
+   
+   
+ 
